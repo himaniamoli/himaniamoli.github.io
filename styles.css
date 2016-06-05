@@ -215,10 +215,16 @@ h1 {
   }
 
   #donkey {
-    left: -10%;
+    left: -15%;
+    height: 45%;
   }
 
   .pole-container {
-    left: 15%;
+    left: 12%;
+  }
+
+  #cactus {
+    left: 36%;
+    height: 20%;
   }
 }
