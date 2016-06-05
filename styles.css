@@ -8,6 +8,8 @@ html, body {
   height: 100%;
   margin: 0;
   font-family: 'LovileBold', 'Arial', sans-serif;
+  text-align: center;
+  overflow: hidden;
 }
 
 h1 {
@@ -21,12 +23,16 @@ h1 {
   height: 15%;
 }
 
-.background {
-  width: 900px;
+.container {
   height: 80%;
+  display: inline-block;
+  text-align: center;
   margin: 0 auto;
   position: relative;
-  background: left bottom/cover no-repeat url(./images/background.jpg);
+}
+
+#background {
+  height: 100%;
 }
 
 #hat {
@@ -38,7 +44,7 @@ h1 {
   position: absolute;
   bottom: 0;
   left: 0;
-  height: 40%;
+  height: 35%;
   animation: fidget 2s ease-in-out infinite;
 }
 
@@ -51,10 +57,9 @@ h1 {
 
 #couple {
   position: absolute;
-  right: 50%;
-  margin-right: -20%;
+  right: 30%;
+  height: 50%;
   bottom: 0;
-  width: 40%;
   animation: dancing 5s ease-in-out infinite;
 }
 
@@ -66,7 +71,6 @@ h1 {
 }
 
 /* Pole */
-
 .pole-container {
   position: absolute;
   width: 30%;
@@ -189,4 +193,32 @@ h1 {
   }
 }
 
+@media (max-device-width: 768px) {
+  .container {
+    height: 85%;
+  }
 
+  #banner {
+    left: -8%;
+  }
+
+  #hat {
+    height: 30%;
+  }
+
+  #couple {
+    display: none;
+  }
+
+  #background {
+    margin-left: -45%;
+  }
+
+  #donkey {
+    left: -10%;
+  }
+
+  .pole-container {
+    left: 15%;
+  }
+}
