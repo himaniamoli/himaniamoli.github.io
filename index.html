@@ -27,5 +27,55 @@
         </div>
       </div>
     </div>
+    <script type="text/javascript">
+      (function() {
+        var elDonkey = document.getElementById('donkey'),
+          isAnimating = false;
+
+        // Double click donkey handler
+        elDonkey.addEventListener('dblclick', function(event) {
+          if (isAnimating) {
+            return;
+          }
+
+          isAnimating = true;
+
+          // Add the runaway + bounce class which bounces the donkey
+          // onto the sidewalk and animates off screen.
+          elDonkey.classList.add('runaway');
+          elDonkey.classList.add('bounce');
+          // After there has been ample time for the donkey to be off
+          // the screen, prepare the donkey to come back.
+          setTimeout(function() {
+            // Hide the donkey while off screen
+            elDonkey.classList.add('hidden');
+            // Disable any transistions so we can move the donkey without
+            // having to wait the transition amount.
+            elDonkey.classList.add('disable-transition');
+            // Remove the runaway class (meaning the donkey will no longer
+            // be off screen after when thread is given up to the renderer)
+            elDonkey.classList.remove('runaway');
+            // Add class that places the donkey on the left side of the
+            // screen -- in perparation to animate back to it's original
+            // position.
+            elDonkey.classList.add('back-home');
+            // Set timeout in order for the classes to be applied by the renderer
+            setTimeout(function() {
+              // Re-enable tranistions and show the donkey again (even
+              // though the donkey will still be off the screen)
+              elDonkey.classList.remove('disable-transition');
+              elDonkey.classList.remove('hidden');
+              // We need a timeout so the the new classes can be rendered
+              setTimeout(function() {
+                // Move donkey bakc to it's original position
+                elDonkey.classList.remove('back-home');
+                elDonkey.classList.remove('bounce');
+                isAnimating = false;
+              }, 200);
+            }, 200);
+          }, 3000);
+        });
+      })();
+    </script>
   </body>
 </html>
